@@ -8,13 +8,17 @@ body {
   font-family: "Poppins", sans-serif;
   background-color: #f4f4f9;
   color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 header {
-  background-color: #4e73df;
+  background: linear-gradient(135deg, #4e73df, #6c63ff);
   color: white;
   padding: 2rem 0;
   text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
@@ -26,7 +30,7 @@ header h1 {
 header p {
   font-size: 1.2rem;
   margin-top: 0.5rem;
-  color: #d1d1f1;
+  color: #f4f4f9;
 }
 
 img {
@@ -40,8 +44,8 @@ img {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  justify-content: center; /* Centraliza os cards */
-  gap: 20px; /* Espaço entre os cards */
+  justify-content: center;
+  gap: 20px;
 }
 
 .container-cards {
@@ -49,51 +53,63 @@ img {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   flex-wrap: wrap;
   gap: 20px;
 }
 
 .project-card {
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 15px; /* Bordas arredondadas mais evidentes */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   padding: 1.5rem;
   text-align: center;
   display: flex;
-  align-items: center;
-  width: 30%; /* Define que cada card ocupará 30% da largura */
-  height: 250px;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30%;
+  height: 350px; /* Aumenta a altura dos cards para mais espaço */
   box-sizing: border-box;
-  transition: transform 0.3s ease;
-  min-width: 280px; /* Define um tamanho mínimo para garantir boa exibição */
+  cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease; /* Transição suave para hover */
+  min-width: 280px;
+  border: 2px solid transparent; /* Borda inicial invisível */
+  background: linear-gradient(
+    to bottom,
+    #ffffff,
+    #f4f4f9
+  ); /* Gradiente leve no fundo */
 }
 
 .project-card:hover {
   transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); /* Sombra mais intensa */
+  border: 2px solid #4e73df; /* Borda colorida no hover */
+  background: linear-gradient(
+    135deg,
+    #fdfbfb,
+    #ebedee
+  ); /* Leve gradiente no fundo no hover */
 }
 
-.icon {
-  font-size: 3rem;
-  margin-right: 1rem;
+.project-card .icon {
+  font-size: 4rem;
   color: #4e73df;
-}
-
-.project-content {
-  text-align: left;
-  flex: 1;
+  margin-bottom: 1rem;
 }
 
 .project-card h2 {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 600;
   color: #4e73df;
+  margin-bottom: 1rem;
 }
 
 .project-card p {
   margin-top: 0.5rem;
   font-size: 1rem;
   color: #666;
+  line-height: 1.4; /* Aumenta o espaçamento entre as linhas */
 }
 
 .btn {
@@ -104,11 +120,19 @@ img {
   color: white;
   text-decoration: none;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .btn:hover {
-  background-color: #2e59d9;
+  background-color: #6c63ff;
+  transform: translateY(-2px); /* Leve movimento no hover */
+}
+
+/* Divisores de linha */
+.divider {
+  height: 2px;
+  background-color: #f1f1f1;
+  margin: 1rem 0;
 }
 
 footer {
@@ -116,7 +140,7 @@ footer {
   color: white;
   text-align: center;
   padding: 1rem 0;
-  margin-top: 3rem;
+  margin-top: auto;
 }
 
 footer p {
@@ -126,12 +150,59 @@ footer p {
 
 @media (max-width: 768px) {
   .project-card {
-    width: 45%; /* Ajusta para dois cards por linha em telas médias */
+    width: 45%;
   }
 }
 
 @media (max-width: 480px) {
   .project-card {
-    width: 100%; /* Ajusta para um card por linha em telas pequenas */
+    width: 100%;
   }
+}
+
+/* Estilo base do título */
+header h1 {
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Estilo das letras individuais */
+.letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(50px);
+  animation: riseUpInfinite 5s ease-in-out infinite 1s; /* Ciclo de 5s com um atraso de 1s */
+}
+
+/* Animação para as letras subirem e voltarem constantemente */
+@keyframes riseUpInfinite {
+  0% {
+    opacity: 0;
+    transform: translateY(50px); /* Começa fora da vista */
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0); /* Chega à posição original */
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-50px); /* Sai da vista no topo */
+  }
+}
+
+/* Pausa a animação quando o mouse está sobre o título */
+header h1:hover .letter {
+  animation-play-state: paused; /* Pausa a animação das letras */
+}
+
+/* Efeito de hover: Zoom suave no título completo */
+header h1:hover {
+  transform: scale(1.05); /* Zoom suave */
+  transition: transform 0.3s ease-in-out; /* Suavidade na transição do zoom */
 }
