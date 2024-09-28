@@ -1,0 +1,88 @@
+/* Arquivo: responsividade.css */
+
+/* Responsividade para tablets */
+@media (max-width: 1024px) {
+  body {
+    padding: 0 10px;
+  }
+
+  header h1 {
+    font-size: 2.5rem;
+  }
+
+  header p {
+    font-size: 1rem;
+  }
+
+  .container-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .project-card {
+    width: 80%; /* Aumenta o tamanho dos cards */
+    margin-bottom: 20px;
+  }
+
+  footer {
+    font-size: 0.8rem;
+  }
+}
+
+/* Responsividade para smartphones grandes */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+
+  header p {
+    font-size: 0.9rem;
+  }
+
+  .project-card {
+    width: 90%;
+    margin-bottom: 15px;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+  }
+
+  footer p {
+    font-size: 0.8rem;
+  }
+}
+
+/* Responsividade para smartphones pequenos */
+@media (max-width: 480px) {
+  body {
+    padding: 0 5px;
+  }
+
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  header p {
+    font-size: 0.85rem;
+  }
+
+  .project-card {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .project-card h2 {
+    font-size: 1.4rem;
+  }
+
+  .btn {
+    font-size: 0.8rem;
+    padding: 0.5rem 0.9rem;
+  }
+
+  footer p {
+    font-size: 0.7rem;
+  }
+}
