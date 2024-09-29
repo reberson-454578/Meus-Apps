@@ -13,18 +13,37 @@ body {
   flex-direction: column;
 }
 
+/* Animação de fade-in suave */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 header {
   background: linear-gradient(135deg, #4e73df, #6c63ff);
   color: white;
   padding: 2rem 0;
   text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 1s ease forwards; /* Animação de entrada */
 }
 
 header h1 {
   font-size: 3.5rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  color: white;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: fadeInUp 1.2s ease forwards; /* Animação de entrada */
 }
 
 header p {
@@ -60,7 +79,7 @@ img {
 
 .project-card {
   background-color: white;
-  border-radius: 15px; /* Bordas arredondadas mais evidentes */
+  border-radius: 15px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   padding: 1.5rem;
   text-align: center;
@@ -68,17 +87,15 @@ img {
   flex-direction: column;
   justify-content: space-between;
   width: 30%;
-  height: 350px; /* Aumenta a altura dos cards para mais espaço */
+  height: 350px;
   box-sizing: border-box;
   cursor: pointer;
-  transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease; /* Transição suave para hover */
+  transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
   min-width: 280px;
-  border: 2px solid transparent; /* Borda inicial invisível */
-  background: linear-gradient(
-    to bottom,
-    #ffffff,
-    #f4f4f9
-  ); /* Gradiente leve no fundo */
+  border: 2px solid transparent;
+  background: linear-gradient(to bottom, #ffffff, #f4f4f9);
+  animation: fadeInUp 0.8s ease forwards; /* Animação de entrada */
+  animation-delay: 0.3s; /* Pequeno atraso na animação */
 }
 
 .project-card:hover {
